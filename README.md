@@ -1,4 +1,4 @@
-<h2>Postman-pinterestExamples</h2>
+<h2>SWAPI-Postman test</h2>
 <h2>Description</h2>
 <p align="justified">This repository is to make request to SWAPI API. All the data is accessible through HTTP web API. https://swapi.dev</br>
 Below a basic guide on how to install the tests,run, architecture folder structure and useful resources.</p>
