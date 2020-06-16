@@ -1,0 +1,348 @@
+{
+	"info": {
+		"_postman_id": "d524fa3a-a74c-4e4d-b02c-0dad3167ff83",
+		"name": "SWAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Get SWAPI Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86fded3b-711d-4646-b41d-9ae4364c1ddb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"if (response !== null) {",
+							"   tests[\"Category people exist\"] = response.people.indexOf('people');",
+							"   tests[\"Category planets exist\"] = response.people.indexOf('planets');",
+							"   tests[\"Category films exist\"] = response.people.indexOf('films');",
+							"   tests[\"Category species exist\"] = response.people.indexOf('species');",
+							"   tests[\"Category vehicles exist\"] = response.people.indexOf('vehicles');",
+							"   tests[\"Category starships exist\"] = response.people.indexOf('starships');",
+							"}",
+							" else {",
+							"\ttests[\"There's no categories available\"] = false;",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Obi-Wan Kenobi info profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbade32c-7b54-4c20-a54f-2934555c6929",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var numberOfPeople = pm.globals.get(\"count\");",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"",
+							"if (response !== null) {",
+							"",
+							"    for (var i = 0; i < response.results.length; i++) {",
+							"        if (response.results[i].name === \"Obi-Wan Kenobi\") {",
+							"",
+							"            //ObiWan characteristics",
+							"            var obiId = response.results[i].url.slice(28, 30);",
+							"            console.log(\"Obi id\" + obiId);",
+							"            tests[\"Obi-Wan people Id =\" + obiId] = response.results[i].url.indexOf(obiId);;",
+							"            pm.globals.set(\"ObiId \", obiId);",
+							"",
+							"            tests[\"Obi-Wan height = 182\"] = response.results[i].height === \"182\";",
+							"            tests[\"Obi-Wan mass = 77\"] = response.results[i].mass === \"77\";",
+							"            tests[\"Obi-Wan hair color = auburn, white\"] = response.results[i].hair_color === \"auburn, white\";",
+							"            tests[\"Obi-Wan skin color = fair\"] = response.results[i].skin_color === \"fair\";",
+							"            tests[\"Obi-Wan eye color = blue-gray\"] = response.results[i].eye_color === \"blue-gray\";",
+							"            tests[\"Obi-Wan birth year = 57BBY\"] = response.results[i].birth_year === \"57BBY\";",
+							"            tests[\"Obi-Wan gender = male\"] = response.results[i].gender === \"male\";",
+							"",
+							"            //ObiWan home",
+							"            var homeWorldId = response.results[i].homeworld.slice(29, 31);",
+							"            console.log(\"Homeworld id \" + homeWorldId);",
+							"            tests[\"Obi-Wan homeworld id =\" + homeWorldId] = response.results[i].homeworld.indexOf(homeWorldId);",
+							"            pm.globals.set(\"homeWorldId\", homeWorldId);",
+							"",
+							"            //ObiWan films",
+							"            var filmsNumber = response.results[i].films.length;",
+							"            tests[\"Obi-Wan number of films = \" + filmsNumber] = response.results[i].films.length;",
+							"",
+							"            const filmsArray = [];",
+							"            for (var j = 0; j < response.results[i].films.length; j++) {",
+							"                var filmId = response.results[i].films[j].slice(27, 28);",
+							"                console.log(filmId);",
+							"                filmsArray.push(filmId);",
+							"            }",
+							"            console.log(\"Films array ids filled\" + filmsArray);",
+							"            tests[\"Obi-Wan participate in films = \" + filmsArray] = filmsArray;",
+							"",
+							"            //ObiWan vehicles",
+							"            const vehiclesArray = [];",
+							"            for (var k = 0; k < response.results[i].vehicles.length; k++) {",
+							"                var vehiclesId = response.results[i].vehicles[k].slice(30, 32);",
+							"                console.log(vehiclesId);",
+							"                vehiclesArray.push(vehiclesId);",
+							"                tests[\"Obi-Wan vehicle id =\" + vehiclesId] = response.results[i].vehicles;",
+							"                pm.globals.set(\"vehicleId\", vehiclesId);",
+							"            }",
+							"",
+							"            //ObiWan starship",
+							"            var starshipNumber = response.results[i].starships.length;",
+							"            tests[\"Obi-Wan number of starship = \" + starshipNumber] = response.results[i].starships.length;",
+							"",
+							"            const starshipsArray = [];",
+							"            for (var l = 0; l < response.results[i].starships.length; l++) {",
+							"                var starshipId = response.results[i].starships[l].slice(31, 33);",
+							"                console.log(starshipId);",
+							"                starshipsArray.push(starshipId);",
+							"            }",
+							"            console.log(\"Starship array ids filled\" + starshipsArray);",
+							"            tests[\"Obi-Wan have starships = \" + starshipsArray] = starshipsArray;",
+							"        }",
+							"    }",
+							"",
+							"}",
+							"else {",
+							"    tests[\"There's no categories available\"] = false;",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/people",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Obi-Wan Kenobi vehicle info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33b0dec0-7c17-4ede-a052-3c0fb1b7663a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var obiId = pm.globals.get(\"ObiId\");",
+							"var obiFilms = pm.globals.get(\"filmsArray\");",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"",
+							"if (response !== null) {",
+							"",
+							"        if (response.pilots.indexOf(obiId) && response.films.indexOf(obiFilms) ){",
+							"",
+							"            tests[\"Vehicle name = Tribubble bongo\"] = response.name === \"Tribubble bongo\";",
+							"            tests[\"Manufacturer = Otoh Gunga Bongameken Cooperative\"] = response.manufacturer === \"Otoh Gunga Bongameken Cooperative\";",
+							"            tests[\"Crew = 1\"] = response.crew === \"1\";",
+							"            tests[\"Passengers = 2\"] = response.passengers === \"2\";",
+							"            tests[\"cargo_capacity = 1600\"] = response.cargo_capacity === \"1600\";",
+							"            tests[\"Vehicle_class = submarine\"] = response.vehicle_class === \"submarine\";",
+							"",
+							"        }",
+							"}",
+							"else {",
+							"    tests[\"There's no vehicle available\"] = false;",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/vehicles/{{vehicleId}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						"{{vehicleId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Get Obi-Wan Kenobi openings films and director of each movie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbe8dcc1-da68-4dee-bd14-57af1e71e1a5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var obiId = pm.globals.get(\"obiId\");",
+							"var obiFilms = pm.globals.get(\"filmsArray\");",
+							"",
+							"console.log(obiId);",
+							"var response = JSON.parse(responseBody);",
+							"",
+							"",
+							"if (response !== null) {",
+							"    for (var i = 0; i < response.results.length; i++) {",
+							"        for (var j = 0; j < response.results[i].characters.length; j++) {",
+							"            if (response.results[i].characters.indexOf(\"people/\" + obiId + \"/\")) {",
+							"",
+							"                tests[\"Title =\" + response.results[i].title] = true",
+							"                tests[\"Director =\" + response.results[i].director] = true;",
+							"                tests[\"Opening crawl =\" + response.results[i].opening_crawl] = true;",
+							"            }",
+							"        }",
+							"    }",
+							"}",
+							"else {",
+							"    tests[\"There's no films available\"] = false;",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/films/",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"films",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Get Obi-Wan Kenobi planet info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be931322-9513-4e4e-bc7f-8f4ac03448f0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var homeWorldId = pm.globals.get(\"homeWorldId\");",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"",
+							"",
+							"if (response !== null) {",
+							"",
+							"    if (response.url.indexOf(\"planets/\" + homeWorldId + \"/\")) {",
+							"        tests[\"Planet name = \" + response.name] =response.name=== \"Stewjon\";",
+							"        tests[\"climate = \" + response.climate] = response.climate===\"temperate\";",
+							"        tests[\"diameter = \" + response.diameter] = response.diameter === \"0\";",
+							"        tests[\"gravity = \" + response.gravity] = response.gravity===\"1 standard\";",
+							"        tests[\"terrain = \" + response.terrain] = response.terrain===\"grass\";",
+							"        tests[\"surface water = \" + response.surface_water] = response.surface_water===\"unknown\";",
+							"    }",
+							"}",
+							"else {",
+							"    tests[\"There's no planet available\"] = false;",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/planets/{{homeWorldId}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"planets",
+						"{{homeWorldId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
