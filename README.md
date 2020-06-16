@@ -40,7 +40,7 @@ Postman test can be run from command line using node.js https://nodejs.org/es/
 <ol>-the last path is the one where you will store the report formatter (the formatter is located in this repo for your convenience)
 finally the last part has the name of the html file where you will find the results of the test.</ol>
 </li>
-<li>Example:  newman run C:\git\Projects\Pinterest collection of tests.json -e C:\git\Projects\environments\PinterestEnvironment.json --delay-request 2000 --reporters cli,html --reporter-html-export PostmanResult.html</li>
+<li>Example:  newman run C:\git\Projects\SWAPI.postman_collection.json -e C:\git\Projects\environments\SWAPI.postman_environment.json --delay-request 2000 --reporters cli,html --reporter-html-export PostmanResult.html</li>
 <li>Note: the postman files must have the extension .json in order to be used with newman, otherwise will not be recognized</li>
 </ul>
     
