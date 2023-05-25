@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+- "16.16.0"
+
+install:
+- npm install i --location=global newman-reporter-htmlextra
+
+script:
+- node_modules/.bin/newman run tests/SWAPI.postman_collection.json -e tests/Environments/SWAPI.postman_environment.json --reporters cli,htmlextra,junit --reporter-htmlextra-export results/petStoreReport.html --reporter-junit-export results/JunitReport.html
