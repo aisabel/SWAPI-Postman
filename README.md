@@ -1,3 +1,7 @@
+# SwaggerPetStore-Postman
+[![Build Status](https://app.travis-ci.com/aisabel/SWAPI-Postman-Test.svg?branch=master)](https://app.travis-ci.com/aisabel/SWAPI-Postman-Test.svg?branch=main)
+
+
 <h2>SWAPI-Postman test</h2>
 <h2>Description</h2>
 <p align="justified">This repository is to make request to SWAPI API. All the data is accessible through HTTP web API. https://swapi.dev</br>
