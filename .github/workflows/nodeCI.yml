@@ -30,13 +30,12 @@ jobs:
           node-version: ${{ matrix.node }}
     - uses: actions/checkout@master
     - name: setup newman
-    - uses: aisabel/SWAPI-PostmanTest/newman-action@master
+    - uses: SWAPI-PostmanTest/newman-action@master
       with:
            collection: postman_collection.json
            environment: postman_environment.json
-         
-    - run: npm ci
     - run: npm install
+    - run: npm ci
     - run: npm run build --if-present
     - run: npm install i --location=global newman-reporter-htmlextra
     - run: npm test
