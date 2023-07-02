@@ -1,4 +1,3 @@
-# SwaggerPetStore-Postman
 [![Build Status](https://app.travis-ci.com/aisabel/SWAPI-Postman-Test.svg?branch=master)](https://app.travis-ci.com/aisabel/SWAPI-Postman-Test.svg?branch=main)
 
 
