@@ -1,8 +1,7 @@
 name: TestBuild
 on:
   push:
-    branches:
-      - main
+    branches: [ "master" ]
 jobs:
   test-api:
     runs-on: ubuntu-latest
