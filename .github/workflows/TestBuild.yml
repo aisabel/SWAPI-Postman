@@ -43,9 +43,10 @@ jobs:
           path: testResults
           
  # Deployment job
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test-api
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+#  deploy:
+ #   runs-on: ubuntu-latest
+ #   needs: test-api
+ #   steps:
+ #     - name: Deploy to GitHub Pages
+ #        id: deployment
+ #       uses: actions/deploy-pages@v2
