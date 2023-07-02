@@ -1,7 +1,10 @@
 name: TestBuild
+
+#Run build within each push of code to master branch
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master" ]    
+    
 jobs:
   test-api:
     runs-on: ubuntu-latest
@@ -9,13 +12,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-
       # Install Node on the runner
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: "18.x"
-
 
       # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
@@ -23,11 +24,9 @@ jobs:
           npm install -g newman
           npm install -g newman-reporter-htmlextra
 
-
       # Make directory to upload the test results
       - name: Make Directory for results
         run: mkdir -p testResults
-
 
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
@@ -47,7 +46,6 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: test-api
     steps:
