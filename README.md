@@ -4,7 +4,8 @@
 <h2>SWAPI-Postman test</h2>
 <h2>Description</h2>
 <p align="justified">This repository is to make request to SWAPI API. All the data is accessible through HTTP web API. https://swapi.dev</br>
-This report is also configured for Continuos Integration (CI) with GithubActions. Click in the Action tab and you will see the workflow.</br>The report produced from the build can be found in this same section under Artifacts.</br>
+This report is also configured for Continuos Integration (CI) with GithubActions. Click in the Action tab and you will see the workflow.</br>The report produced from the build can be found by clicking Test Build > Summary</br>
+At the bottom of the workflow summary page, there is a dedicated section for artifacts.</br>
 Below a basic guide on how to install the tests, run, architecture folder structure and useful resources.</p>
 
 <h2>Architecture folder structure</h2>
@@ -13,6 +14,7 @@ Below a basic guide on how to install the tests, run, architecture folder struct
   <li>reportFormatter > template-default-colored.hbs Contains the report used for command line run</li>
   <li>SWAPI.postman_collection.json Collection of request made in postman</li>
 </ul>
+<p align="justified">There's also a .travis.yml file that was used previously to connect with Travis CI
 
 <h2>Install</h2>
 <p>Postman application is open source software, a Javascript application designed to load test functional behavior. Postman's features simplify each step of building an API and streamline collaboration so you can create better APIs—faster. The tool can be downloaded at: https://www.postman.com/downloads/</br>
