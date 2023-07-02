@@ -1,10 +1,11 @@
-[![Build Status](https://app.travis-ci.com/aisabel/SWAPI-Postman-Test.svg?branch=master)](https://app.travis-ci.com/aisabel/SWAPI-Postman-Test.svg?branch=main)
+[![TestBuild](https://github.com/aisabel/SWAPI-PostmanTest/actions/workflows/TestBuild.yml/badge.svg)](https://github.com/aisabel/SWAPI-PostmanTest/actions/workflows/TestBuild.yml)
 
 
 <h2>SWAPI-Postman test</h2>
 <h2>Description</h2>
 <p align="justified">This repository is to make request to SWAPI API. All the data is accessible through HTTP web API. https://swapi.dev</br>
-Below a basic guide on how to install the tests,run, architecture folder structure and useful resources.</p>
+This report is also configured for Continuos Integration (CI) with GithubActions. Click in the Action tab and you will see the workflow.</br>The report produced from the build can be found in this same section under Artifacts.</br>
+Below a basic guide on how to install the tests, run, architecture folder structure and useful resources.</p>
 
 <h2>Architecture folder structure</h2>
 <ul>
@@ -14,7 +15,7 @@ Below a basic guide on how to install the tests,run, architecture folder structu
 </ul>
 
 <h2>Install</h2>
-<p>Postman application is open source software, a Javascript application designed to load test functional behavior. Postman's features simplify each step of building an API and streamline collaboration so you can create better APIs—faster. This repository is using version 7.26.0 The tool can be downloaded at: https://www.postman.com/downloads/</br>\
+<p>Postman application is open source software, a Javascript application designed to load test functional behavior. Postman's features simplify each step of building an API and streamline collaboration so you can create better APIs—faster. The tool can be downloaded at: https://www.postman.com/downloads/</br>
 Postman test can be run from command line using node.js https://nodejs.org/es/
 </p>
 
@@ -49,6 +50,9 @@ finally the last part has the name of the html file where you will find the resu
     
 <h2>External references: </h2>
 <ul>
-<li><a href="https://learning.postman.com/docs/postman/collection-runs/command-line-integration-with-newman/">Command line integration with newman</a></li>  
-<li><a href="https://swapi.dev/">SWAPI API documentation</a></li>  
+<li><a href="https://learning.postman.com/docs/postman/collection-runs/command-line-integration-with-newman/">Command line integration with newman</a></li>
+<li><a href="https://www.npmjs.com/package/newman-reporter-htmlextra">Newman reporter</a></li>
+<li><a href="https://swapi.dev/">SWAPI API documentation</a></li>
+<li><a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github Actions</a></li>
+</ul>
 
