@@ -32,7 +32,7 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          newman run SWAPI.postman_collection.json -e swapiEnvironmnent.json -r cli,htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra > testResults/runreport1.html
+          newman run SWAPI.postman_collection.json -e swapiEnvironmnent.json --bail -r cli
           # Upload the contents of Test Results directory to workspace
           
       #Create and output results
