@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - uses: SWAPI-PostmanTest/newman-action@master
+    - uses: aisabel/SWAPI-PostmanTest/newman-action@master
       with:
            collection: postman_collection.json
            environment: postman_environment.json
