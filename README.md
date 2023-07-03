@@ -10,9 +10,9 @@ Below a basic guide on how to install the tests, run, architecture folder struct
 
 <h2>Architecture folder structure</h2>
 <ul>
-  <li>Environment > Contains the environment file to be used with postman </li>
   <li>reportFormatter > template-default-colored.hbs Contains the report used for command line run</li>
   <li>SWAPI.postman_collection.json Collection of request made in postman</li>
+  <li>SWAPI.postman_environment.json Environment used within the collection</li>
 </ul>
 <p align="justified">There's also a .travis.yml file that was used previously to connect with Travis CI
 
