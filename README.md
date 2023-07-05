@@ -4,17 +4,22 @@
 <h2>SWAPI-Postman test</h2>
 <h2>Description</h2>
 <p align="justified">This repository is to make request to SWAPI API. All the data is accessible through HTTP web API. https://swapi.dev</br>
-This report is also configured for Continuos Integration (CI) with GithubActions. Click in the Action tab and you will see the workflow.</br>The report produced from the build can be found by clicking Test Build > Summary</br>
+This repository is also configured for Continuos Integration (CI) with <a href="https://github.com/aisabel/SWAPI-PostmanTest/actions/workflows/TestBuild.yml">GithubActions </a>.<br> 
+
+Click in the <a href="https://github.com/aisabel/SWAPI-PostmanTest/actions/workflows/TestBuild.yml">Action tab</a> and you will see the latest workflow run. Select the latest run and click on it.</br>
 At the bottom of the workflow summary page, there is a dedicated section for artifacts.</br>
+The report produced by the runtime, is under the <b>Artifacts</b> section</br>
+
 Below a basic guide on how to install the tests, run, architecture folder structure and useful resources.</p>
 
 <h2>Architecture folder structure</h2>
 <ul>
-  <li>reportFormatter > template-default-colored.hbs Contains the report used for command line run</li>
-  <li>SWAPI.postman_collection.json Collection of request made in postman</li>
-  <li>SWAPI.postman_environment.json Environment used within the collection</li>
+  <li>.github > workflows > <b>TestBuild.yml</b> This file contains the configuration for CI with githubActions</li>
+  <li> reportFormatter > <b>template-default-colored.hbs</b> Contains the report used for command line run</li>
+  <li><b>SWAPI.postman_collection.json</b> Collection of request made in postman</li>
+  <li><b>SWAPI.postman_environment.json</b> Environment used within the collection</li>
 </ul>
-<p align="justified">There's also a .travis.yml file that was used previously to connect with Travis CI
+<p align="justified">There's also a .travis.yml file that was used previously to connect with Travis CI, but now is disconnected</p>
 
 <h2>Install</h2>
 <p>Postman application is open source software, a Javascript application designed to load test functional behavior. Postman's features simplify each step of building an API and streamline collaboration so you can create better APIs—faster. The tool can be downloaded at: https://www.postman.com/downloads/</br>
@@ -32,22 +37,22 @@ Postman test can be run from command line using node.js https://nodejs.org/es/
   <li>Click on "Import" button</li>
   <li>There are two ways to send request: The first one is click on each request and then click button "send". The other one is to click button in the top menu "Runner"</li>
   <li>The first one is click on each request and then click button "send". The other one is to click button in the top menu "Runner"</li>
-  <li>The other one is to click button in the top menu "Runner", select the collection to run and the environment to be used and click button "Start Run". Within this option the number of iterations can be set up manually so the runner will be exceuted "n" times. This option also allows to add delays between each request.</li>
+  <li>Once selected the collection and environment to run, click button "Start Run". Within this option the number of iterations can be set up manually so the runner will be exceuted "n" times. This option also allows to add delays between each request.</li>
  </ul>
 <h3>How to run tests from the command line</h3>
 <ul>
   <li>To run the testplan from the command line you need to open a command prompt of Node.js</li>
   <li>Traverse locally until folder where postman test are located</li>
-  <li>Run the command: newman run with the following parameters: </il>
+  <li>Run the command: <b>newman run</b> with the following parameters: </il>
     <li>Parameters:
 <ol>- Path to the collection name</ol>
-<ol>-folder name to run (if applies)</ol>
-<ol>-environment to use</ol>
-<ol>-the last path is the one where you will store the report formatter (the formatter is located in this repo for your convenience)
+<ol>- folder name to run (if applies)</ol>
+<ol>- environment to use</ol>
+<ol>- the last part is the one where you will store the report formatter (the formatter is located in this repo for your convenience)
 finally the last part has the name of the html file where you will find the results of the test.</ol>
 </li>
 <li>Example:  newman run C:\git\Projects\SWAPI.postman_collection.json -e C:\git\Projects\environments\SWAPI.postman_environment.json --delay-request 2000 --reporters cli,html --reporter-html-export PostmanResult.html</li>
-<li>Note: the postman files must have the extension .json in order to be used with newman, otherwise will not be recognized</li>
+<li><b>Note:</b> the postman files must have the extension .json in order to be used with newman, otherwise will not be recognized</li>
 </ul>
     
 <h2>External references: </h2>
