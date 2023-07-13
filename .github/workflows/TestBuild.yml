@@ -46,7 +46,11 @@ jobs:
  # Deployment job
   deploy:
     runs-on: ubuntu-latest
-    permissions: read-all|write-all
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     needs: test-api
     steps:
       - name: Deploy to GitHub Pages
