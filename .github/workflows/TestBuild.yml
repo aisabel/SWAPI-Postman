@@ -5,7 +5,6 @@ on:
   push:
     branches: [ "master" ]    
     
-permissions: read-all|write-all
     
 jobs:
   test-api:
@@ -47,6 +46,7 @@ jobs:
  # Deployment job
   deploy:
     runs-on: ubuntu-latest
+    permissions: read-all|write-all
     needs: test-api
     steps:
       - name: Deploy to GitHub Pages
