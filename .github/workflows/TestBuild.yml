@@ -5,6 +5,8 @@ on:
   push:
     branches: [ "master" ]    
     
+permissions: read-all|write-all
+    
 jobs:
   test-api:
     runs-on: ubuntu-latest
@@ -43,10 +45,10 @@ jobs:
           path: testResults
           
  # Deployment job
-#  deploy:
- #   runs-on: ubuntu-latest
- #   needs: test-api
- #   steps:
- #     - name: Deploy to GitHub Pages
- #        id: deployment
- #       uses: actions/deploy-pages@v2
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test-api
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
